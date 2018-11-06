@@ -11,7 +11,12 @@ app.use(morgan("dev"));
 
 app.use(
   cors({
-    origin: CLIENT_ORIGIN
+    origin: "https://quizzical-clarke-da2ef3.netlify.com/",
+    methods: "GET,PUT,POST,DELETE,OPTIONS",
+    preflightContinue: false,
+    headers:
+      "Cache-Control, Pragma, Content-Type, Authorization, Content-Length, X-Requested-With",
+    "Access-Control-Allow-Headers": "Authorization, Content-Type" // headers allowed
   })
 );
 
