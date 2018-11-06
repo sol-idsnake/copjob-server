@@ -11,10 +11,7 @@ app.use(morgan("dev"));
 
 app.use(
   cors({
-    origin: CLIENT_ORIGIN,
-    methods: "GET,PUT,POST,DELETE,OPTIONS",
-    allowedHeaders: "Content-Type,Authorization",
-    optionsSuccessStatus: 204
+    origin: CLIENT_ORIGIN
   })
 );
 
