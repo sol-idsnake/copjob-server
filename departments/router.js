@@ -8,6 +8,7 @@ const jsonParser = bodyParser.json();
 app.use(express.json());
 
 router.get("/get", (req, res) => {
+  console.log(req.params)
   Department.find()
     .then(departments => {
       res.json(departments.map(department => department.serialize()));
