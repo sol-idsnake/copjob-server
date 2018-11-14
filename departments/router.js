@@ -8,7 +8,6 @@ const jsonParser = bodyParser.json();
 app.use(express.json());
 
 router.get("/get", (req, res) => {
-  console.log(req.params)
   Department.find()
     .then(departments => {
       res.json(departments.map(department => department.serialize()));
@@ -29,7 +28,7 @@ router.post("/add", jsonParser, (req, res) => {
     age: req.body.age,
     citizenship: req.body.citizenship,
     url: req.body.url,
-    description: req.body.description
+    description: req.body.description,
   })
     .then(department => {
       console.log(department + " before serialize");

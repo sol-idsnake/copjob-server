@@ -7,14 +7,17 @@ const departmentSchema = mongoose.Schema({
   location: { type: String },
   state: { type: String },
   position: { type: String },
-  salary: { type: String },
+  salary: {
+    minRange: { type: Number },
+    maxRange: { type: Number },
+  },
   age: { type: Number },
   citizenship: { type: Boolean },
   url: {
     link: { type: String },
-    tag: { type: String }
+    tag: { type: String },
   },
-  description: { type: String }
+  description: { type: String },
 });
 
 departmentSchema.methods.serialize = function() {
@@ -28,7 +31,7 @@ departmentSchema.methods.serialize = function() {
     age: this.age,
     citizenship: this.citizenship,
     url: this.url,
-    description: this.description
+    description: this.description,
   };
 };
 
