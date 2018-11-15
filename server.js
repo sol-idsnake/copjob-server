@@ -20,7 +20,7 @@ app.use(morgan("dev"));
 // });
 
 const corsOptions = {
-  origin: CLIENT_ORIGIN,
+  origin: /quizzical-clarke-da2ef3\.netlify\.com$/,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   allowedHeaders: "Content-Type",
   optionsSuccessStatus: 200
