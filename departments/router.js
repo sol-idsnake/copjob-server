@@ -2,12 +2,22 @@ const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
 const { Department } = require("./models");
+const cors = require("cors");
+
+const { CLIENT_ORIGIN } = require("../config");
 
 const app = express();
 const jsonParser = bodyParser.json();
 app.use(express.json());
 
-router.get("/get", (req, res) => {
+const corsOptions = {
+  origin: CLIENT_ORIGIN,
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  allowedHeaders: "Content-Type",
+  optionsSuccessStatus: 200
+}
+
+router.get("/get", cors(corsOptions), (req, res) => {
   Department.find()
     .then(departments => {
       res.json(departments.map(department => department.serialize()));
