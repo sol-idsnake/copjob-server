@@ -13,10 +13,7 @@ const departmentSchema = mongoose.Schema({
   },
   age: { type: Number },
   citizenship: { type: Boolean },
-  url: {
-    link: { type: String },
-    tag: { type: String },
-  },
+  url: { type: String },
   description: { type: String },
 });
 
