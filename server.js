@@ -20,7 +20,10 @@ app.use(morgan("dev"));
 // });
 
 const corsOptions = {
-  origin: CLIENT_ORIGIN
+  origin: CLIENT_ORIGIN,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+  allowedHeaders: "Content-Type",
+  optionsSuccessStatus: 200
 }
 
 app.use("/dept", cors(corsOptions), departmentRouter);
