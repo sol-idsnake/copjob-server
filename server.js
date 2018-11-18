@@ -10,8 +10,9 @@ const app = express();
 app.use(morgan("dev"));
 
 var corsOptions = {
-  origin: "https://quizzical-clarke-da2ef3.netlify.com",
+  origin: "https://quizzical-clarke-da2ef3.netlify.com/",
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  credentials: true,
 };
 app.use(cors(corsOptions));
 // app.use(function(req, res, next) {
