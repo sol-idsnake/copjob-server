@@ -9,21 +9,18 @@ const app = express();
 
 app.use(morgan("dev"));
 
-var corsOptions = {
-  origin: /quizzical-clarke-da2ef3\.netlify\.com$/,
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  credentials: true,
-};
-app.use(cors(corsOptions));
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", CLIENT_ORIGIN);
-//   res.header("Access-Control-Allow-Headers", "Content-Type");
-//   res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
-//   if (req.method === "OPTIONS") {
-//     return res.sendStatus(204);
-//   }
-//   next();
-// });
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(204);
+  }
+  next();
+});
 
 app.use("/dept", departmentRouter);
 
