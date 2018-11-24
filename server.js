@@ -3,9 +3,15 @@ const express = require("express");
 const mongoose = require("mongoose");
 const departmentRouter = require("./departments/router");
 const morgan = require("morgan");
-const cors = require("cors");
+// const cors = require("cors");
+const passport = require("passport");
 const { PORT, DATABASE_URL, CLIENT_ORIGIN } = require("./config");
 const app = express();
+
+const { router: usersRouter } = require("./users");
+const { router: authRouter, localStrategy, jwtStrategy } = require("./auth");
+
+mongoose.Promise = global.Promise;
 
 app.use(morgan("dev"));
 
@@ -23,7 +29,17 @@ app.use(function(req, res, next) {
   next();
 });
 
+passport.use(localStrategy);
+passport.use(jwtStrategy);
+
+app.use("/users", usersRouter);
+app.use("/auth", authRouter);
 app.use("/dept", departmentRouter);
+
+const jwtAuth = passport.authenticate("jwt", { session: false });
+
+// https://mongoosejs.com/docs/deprecations
+mongoose.set("useCreateIndex", true);
 
 let server;
 

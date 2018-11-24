@@ -3,8 +3,6 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 const { Department } = require("./models");
 
-const { CLIENT_ORIGIN } = require("../config");
-
 const app = express();
 const jsonParser = bodyParser.json();
 app.use(express.json());

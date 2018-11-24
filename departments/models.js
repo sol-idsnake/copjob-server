@@ -8,8 +8,8 @@ const departmentSchema = mongoose.Schema({
   state: { type: String },
   position: { type: String },
   salary: {
-    minRange: { type: Number },
-    maxRange: { type: Number },
+    minRange: { type: String },
+    maxRange: { type: String },
   },
   age: { type: Number },
   citizenship: { type: Boolean },
